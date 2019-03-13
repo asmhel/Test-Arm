@@ -9,10 +9,16 @@
         "description": "Short description of the project"
       }
     },
-
+    "sshKeyData": {
+      "type": "string",
+      "minLength": 2,
+      "metadata": {
+        "description": "SSH Key"
+      }
+    },
     "contactEmail": {
       "type": "string",
-      "defaultValue": "asmer.helez@innofactor.com"
+      "defaultValue": "damian.flynn@innofactor.com"
     },
     "environment": {
       "type": "string",
@@ -22,14 +28,14 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }
     }
   },
   "variables": {
-    "uri": "https://raw.githubusercontent.com/asmhel/Test-Arm/master/"
+    "uri": "https://raw.githubusercontent.com/DamianFlynn/arm/master"
   },
   "functions": [],
   "resources": [
@@ -175,7 +181,7 @@
                   "destinationAddressPrefix": "*",
                   "sourcePortRange": "*",
                   "destinationPortRange": "22",
-                  "access": "Allow",
+                  "access": "Allow",                 
                   "protocol": "Tcp",
                   "sourcePortRanges": [],
                   "destinationPortRanges": [],
@@ -297,7 +303,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('uri'),'/modules/resource/microsoft.virtualMachines/azuredeploy.windows.json')]",
+          "uri": "[concat(variables('uri'),'/modules/resource/microsoft.virtualMachines/azuredeploy.linux.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -317,26 +323,32 @@
               "vm_size": "Standard_B1s",
 
               "storage_image_reference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2016-Datacenter",
-                "version": "latest"
+                "publisher": "Canonical",
+                "offer": "UbuntuServer",
+                "sku": "16.04-LTS",
+                "version": "16.04.201811140"
               },
 
               "storage_os_disk": {
-                "name":              "vm1-osdisk')]",
+                "name":              "myosdisk1",
                 "caching":           "ReadWrite",
                 "create_option":     "FromImage",
                 "managed_disk_type": "Standard_LRS"
               },
 
               "os_profile": {
-                "computer_name":   "vm1",
+                "computer_name":   "hostname",
                 "admin_username":  "sysadmin",
-                "admin_password":  "Password1234!"
+                "admin_password":  "Password1234!",
+                "sshKeyData": "[parameters('sshKeyData')]"
+              },
+              "os_profile_linux_config": {
+                "disable_password_authentication": "false"
+              },
+              "custom_script": {
+                "fileUris":"/Reference/Striesand/refStriesand.sh",
+                "commandToExecute": "sh refStriesand.sh"
               }
-
-
             }
           }
         }
