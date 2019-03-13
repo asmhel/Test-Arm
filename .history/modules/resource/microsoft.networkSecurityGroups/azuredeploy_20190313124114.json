@@ -17,7 +17,7 @@
     },
     "contactEmail": {
       "type": "string",
-      "defaultValue": "asmer.helez@innofactor.com"
+      "defaultValue": "damian.flynn@innofactor.com"
     },
     "environment": {
       "type": "string",

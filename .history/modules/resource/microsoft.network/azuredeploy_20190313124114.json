@@ -27,7 +27,7 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }
@@ -37,7 +37,7 @@
     "vnetName": "[replace(parameters('name'),'{resourceType}','vnet')]"
   },
   "resources": [
-
+    
     {
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('vnetName')]",

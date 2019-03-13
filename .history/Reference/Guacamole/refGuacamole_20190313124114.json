@@ -28,7 +28,7 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }
@@ -169,7 +169,7 @@
                   "destinationAddressPrefix": "*",
                   "sourcePortRange": "*",
                   "destinationPortRange": "22",
-                  "access": "Allow",
+                  "access": "Allow",                 
                   "protocol": "Tcp",
                   "sourcePortRanges": [],
                   "destinationPortRanges": [],

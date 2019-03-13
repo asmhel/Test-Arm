@@ -28,7 +28,7 @@
     },
     "contactEmail": {
       "type": "string",
-      "defaultValue": "asmer.helez@innofactor.com"
+      "defaultValue": "damian.flynn@innofactor.com"
     },
     "environment": {
       "type": "string",
@@ -38,7 +38,7 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }

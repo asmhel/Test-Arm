@@ -28,7 +28,7 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }
@@ -145,7 +145,19 @@
             "value": {
               "securityRules": [
                 {
-                  "name": "AllowHTTPS",
+                  "name": "RDPAllow",
+                  "description": "allow RDP connections",
+                  "direction": "Inbound",
+                  "priority": 100,
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "10.0.0.0/24",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "3389",
+                  "access": "Allow",
+                  "protocol": "Tcp"
+                },
+                {
+                  "name": "AllowNGINX",
                   "description": "",
                   "direction": "Inbound",
                   "priority": 101,
@@ -164,12 +176,12 @@
                   "name": "AllowSSHTCP",
                   "description": "",
                   "direction": "Inbound",
-                  "priority": 102,
+                  "priority": 108,
                   "sourceAddressPrefix": "*",
                   "destinationAddressPrefix": "*",
                   "sourcePortRange": "*",
                   "destinationPortRange": "22",
-                  "access": "Allow",
+                  "access": "Allow",                 
                   "protocol": "Tcp",
                   "sourcePortRanges": [],
                   "destinationPortRanges": [],
@@ -177,14 +189,30 @@
                   "destinationAddressPrefixes": []
                 },
                 {
-                  "name": "AllowHTTP",
-                  "description": "allow HTTP connections",
+                  "name": "AllowWireguard",
+                  "description": "",
                   "direction": "Inbound",
-                  "priority": 103,
+                  "priority": 112,
                   "sourceAddressPrefix": "*",
                   "destinationAddressPrefix": "*",
                   "sourcePortRange": "*",
-                  "destinationPortRange": "8080",
+                  "destinationPortRange": "51820",
+                  "access": "Allow",
+                  "protocol": "Udp",
+                  "sourceAddressPrefixes": [],
+                  "destinationAddressPrefixes": [],
+                  "sourcePortRanges": [],
+                  "destinationPortRanges": []
+                },
+                {
+                  "name": "AllowHTTP",
+                  "description": "allow HTTP connections",
+                  "direction": "Inbound",
+                  "priority": 120,
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "*",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "80",
                   "access": "Allow",
                   "protocol": "Tcp",
                   "sourcePortRanges": [],
@@ -318,8 +346,8 @@
                 "disable_password_authentication": "false"
               },
               "custom_script": {
-                "fileUris":"/Reference/Guacamole/guac-install.sh",
-                "commandToExecute": "bash guac-install.sh --mysqlpwd Password1234! --guacpwd Password1234!"
+                "fileUris":"/Reference/Striesand/refStriesand.sh",
+                "commandToExecute": "sh refStriesand.sh"
               }
             }
           }

@@ -35,7 +35,6 @@
   },
   "variables": {
     "vmName": "[replace(parameters('name'),'{resourceType}','vm')]",
-    "sshKeyPath": "[concat('/home/',parameters('vmSettings').os_profile.admin_username,'/.ssh/authorized_keys')]",
     "uri": "https://raw.githubusercontent.com/DamianFlynn/arm/master"
   },
   "resources": [

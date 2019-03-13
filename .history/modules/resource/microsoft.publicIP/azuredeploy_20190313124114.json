@@ -24,7 +24,7 @@
         "Dev",
         "POC"
       ],
-      "defaultValue": "Test",
+      "defaultValue": "Dev",
       "metadata": {
         "description": "Type of environment"
       }
@@ -56,10 +56,10 @@
     "resourceId": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/publicIPAddresses', variables('pipName'))]"
-    },
+    }, 
     "publicIP": {
       "type": "string",
       "value": "reference(variables('pipName')).IpAddress"
-    }
+    }  
   }
 }
