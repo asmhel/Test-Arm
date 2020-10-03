@@ -28,7 +28,7 @@
     },
     "contactEmail": {
       "type": "string",
-      "defaultValue": "asmer.helez@innofactor.com"
+      "defaultValue": "user@gmail.com"
     },
     "environment": {
       "type": "string",

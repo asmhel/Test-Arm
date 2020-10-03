@@ -18,7 +18,7 @@
     },
     "contactEmail": {
       "type": "string",
-      "defaultValue": "damian.flynn@innofactor.com"
+      "defaultValue": "user@gmail.com"
     },
     "environment": {
       "type": "string",
